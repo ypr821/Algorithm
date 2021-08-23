@@ -1,0 +1,67 @@
+import java.util.Arrays;
+class Solution {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";                      
+        int count = 0;        
+        //1. 참가자 완주자 목록 배열 인덱스별로 비교한다.        
+        for(int i=0;i<participant.length;i++){
+            count = 0;
+            String name = participant[i];
+            for(String nameCompletion : completion){
+                //2. 비교후 참가자이름과 완주자 이름에 모두 있으면 ++count
+                if(name.equals(nameCompletion)){
+                    //System.out.println(name+"와 이름이 같네");
+                    ++count;
+                }else{
+                    //System.out.println(name+"이름이 다르네 다른이름은 : "+nameCompletion);
+                }
+            }  
+            //3. count == 0 인 경우 이름(answer) 리턴
+            if(count == 0){          
+                answer =  name;
+            }
+        }
+        //이름 같은 사람 카운트 메서드 사용
+        String[] participantSameNameArray = countSameName(participant);
+        String[] completionSameNameArray = countSameName(completion);
+        
+        int count2 = 0;
+        try{
+            //Cname.substring(0,Cname.lastIndexOf("-"))
+            for(String str : participantSameNameArray){
+                if(Arrays.asList(completionSameNameArray).contains(str)){
+                      System.out.println(str+"가 completionSameNameArray안에 있네");  
+                }else{
+                    System.out.println(str+"가 completionSameNameArray안에 없네"); 
+                    answer = str.substring(0,str.lastIndexOf("-"));    
+                }
+            }
+        }        
+        catch(Exception e){
+            //System.out.println("예외: : "+e);
+        }             
+        return answer;
+    }    
+    
+    //이름 같은 사람 카운트 메서드 
+    public static  String[] countSameName(String[] arr){
+        int count = 0;
+        String name1; 
+        String nameAndCount = "";
+        String[] nameAndCountArray = new String[arr.length];
+        for(int i=0; i < arr.length; i++){
+            count = 0;
+            name1 = arr[i];
+            for(String name2 : arr){
+                if(name1.equals(name2)){
+                    ++count;
+                    if(count >1){
+                        nameAndCount = name2+"-"+count;
+                        nameAndCountArray[i] = nameAndCount;
+                    }
+                }
+            }         
+        } 
+        return nameAndCountArray;        
+    }    
+}
