@@ -5,34 +5,34 @@ class Solution {
   public int[] solution(int[] answers) {
 
     int answersLength = answers.length;
-    int[] studentArray1 = {1, 2, 3, 4, 5};
-    int[] studentArray2 = {2, 1, 2, 3, 2, 4, 2, 5};
-    int[] studentArray3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+    int[] student1 = {1, 2, 3, 4, 5};
+    int[] student2 = {2, 1, 2, 3, 2, 4, 2, 5};
+    int[] student3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
-    int studentCorrectCount1 = getCorrectCount(answers, answersLength, studentArray1,
-        studentArray1.length);
-    int studentCorrectCount2 = getCorrectCount(answers, answersLength, studentArray2,
-        studentArray2.length);
-    int studentCorrectCount3 = getCorrectCount(answers, answersLength, studentArray3,
-        studentArray3.length);
+    int correctAnswerCount1 = getCorrectCount(answers, answersLength, student1,
+        student1.length);
+    int correctAnswerCount2 = getCorrectCount(answers, answersLength, student2,
+        student2.length);
+    int correctAnswerCount3 = getCorrectCount(answers, answersLength, student3,
+        student3.length);
 
-    return getStudents(studentCorrectCount1, studentCorrectCount2, studentCorrectCount3);
+    return getStudents(correctAnswerCount1, correctAnswerCount2, correctAnswerCount3);
   }
 
-  public int getCorrectCount(int[] answers, int answersLength, int[] studentArray,
-      int studentArrayLength) {
+  public int getCorrectCount(int[] answers, int answersLength, int[] student,
+      int studentLength) {
     List<Integer> list = new ArrayList<>();
-    int repeatNum = answersLength / studentArrayLength;
-    int num = answersLength % studentArrayLength;
+    int repeatNum = answersLength / studentLength;
+    int num = answersLength % studentLength;
     int result = 0;
 
     for (int i = 0; i < repeatNum; i++) {
-      for (int j = 0; j < studentArrayLength; j++) {
-        list.add(new Integer(studentArray[j]));
+      for (int j = 0; j < studentLength; j++) {
+        list.add(new Integer(student[j]));
       }
     }
     for (int i = 0; i < num; i++) {
-      list.add(new Integer(studentArray[i]));
+      list.add(new Integer(student[i]));
     }
 
     for (int i = 0; i < answersLength; i++) {
