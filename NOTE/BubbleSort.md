@@ -20,7 +20,7 @@
 ```java
 package bubbleSort;
 
-public class BubbleSort2 {
+public class BubbleSort {
   public int[] bubbleSort (int [] array){
     int length = array.length;
     for(int i = 0; i < length-1; i++){
@@ -36,27 +36,23 @@ public class BubbleSort2 {
     return array;
   }
 }
-
-//--------------------------------------------
-
+```
+```java
 package bubbleSort;
 
-public class BubbleSort2 {
-  public int[] bubbleSort (int [] array){
-    int length = array.length;
-    for(int i = 0; i < length-1; i++){
-      for(int j = 0; j < length-1; j++){
-        if(array[j] > array[j+1]){
-          int temp = array[j];
-          //Swap numbers
-          array[j] = array[j+1];
-          array[j+1] = temp;
-        }
-      }
-    }
-    return array;
+import java.util.Arrays;
+
+public class Driver {
+  public static void main (String [] args){
+    int[] numbers = {99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0};
+    BubbleSort bubbleSort = new BubbleSort();
+    numbers = bubbleSort.bubbleSort(numbers);
+
+
+    System.out.println(Arrays.toString(numbers));
   }
 }
+//실행결과 : [0, 1, 2, 4, 5, 6, 44, 63, 87, 99, 283]
 ```
 
 출처 : Udemy
