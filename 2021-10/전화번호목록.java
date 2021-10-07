@@ -15,7 +15,6 @@ class Solution {
       return true;
     }
   }
-
   public int checkNumber(String[] phone_book) {
     int firstLength = phone_book[0].length();
     Map<String, String> map = new HashMap<>();
@@ -33,9 +32,8 @@ class Solution {
 
 ///////////////////////////////////////////////////////////////////////////////
 /*
-  다시 푼 문제 풀이 ..
-  해시문제 길래 해시맵으로 풀어봤는데 첫번째 풀이는 속도도 늦고 답도 없어서 방법을 다르게 해서 풀어봤다.
-  그런데 밑에 풀이도 문제 통과를 하지 못했다. 왜지??왜 안되는 걸까?????ㅜㅜ
+  해시문제 길래 해시맵으로 풀어봤는데 첫번째 풀이는 속도도 늦고 답도 없어서 방법을 다르게 해서 풀어봤습니다.
+  그런데 밑에 풀이도 문제 통과를 하지 못했습니다다.
 */
 
 
@@ -60,12 +58,10 @@ class Solution {
     } else {
       return true;
     }
-
   }
-
 }
 
-//다른 사람 풀이.1 - 문제 개정되고나서는 통과가 안되지만 신기해서 가져왔다.
+// 다른 사람 풀이.1 - 문제 개정되고나서는 통과가 안되지만 신기해서 가져왔습니다.
 
 class Solution {
   public boolean solution(String[] phoneBook) {
@@ -80,7 +76,7 @@ class Solution {
 }
 
 
-//다른 사람 풀이.2
+// 다른 사람 풀이.2
 import java.util.Arrays;
 
 class Solution {
@@ -90,6 +86,7 @@ class Solution {
     Arrays.sort(phone_book);
 
     for(int i=0; i<phone_book.length-1; i++) {
+      //정렬을 했으니까 앞 뒤로 검색하면서 시작하는 게 같으면...무조건 false반환하면 됩니다.
       if(phone_book[i+1].startsWith(phone_book[i])){
         answer = false;
         break;
