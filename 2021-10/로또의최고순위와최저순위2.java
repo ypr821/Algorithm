@@ -11,7 +11,6 @@ class Solution {
         zeroCount++;
       }
     }
-
     Arrays.sort(lottos);
     Arrays.sort(winNums);
     for (int winNum : winNums) {
