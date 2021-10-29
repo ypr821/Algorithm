@@ -1,45 +1,38 @@
-import java.util.Arrays;
+import java.util.*;
 
 class Solution {
 
   public int[] solution(int[] lottos, int[] winNums) {
-    int[] answerss = new int[2];
+    int[] answer = new int[2];
     int count = 0;
-    int zeroCount;
+    int zeroCount = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+
     for (int lotto : lottos) {
       if (lotto == 0) {
         zeroCount++;
+      } else {
+        map.put(lotto, count);
       }
     }
-    Arrays.sort(lottos);
-    Arrays.sort(winNums);
+
     for (int winNum : winNums) {
-      for (int lotto : lottos) {
-        if (winNum == lotto) {
-          count++;
-        }
+      if (map.get(winNum) != null) {
+        map.put(winNum, count++);
       }
     }
 
-    answers[0] = checkRanking(zeroCount + count); //높은순위
-    answers[1] = checkRanking(count); //낮은순위
+    answer[0] = getRank(zeroCount + count);
+    answer[1] = getRank(count);
 
-    return answers;
+    return answer;
   }
 
-  public int checkRanking(int count) {
-    if (count == 6) {
-      return 1;
-    } else if (count == 5) {
-      return 2;
-    } else if (count == 4) {
-      return 3;
-    } else if (count == 3) {
-      return 4;
-    } else if (count == 2) {
-      return 5;
-    } else {
+  public int getRank(int count) {
+    if (7 - count == 6 || 7 - count == 7) {
       return 6;
+    } else {
+      return 7 - count;
     }
   }
 }
